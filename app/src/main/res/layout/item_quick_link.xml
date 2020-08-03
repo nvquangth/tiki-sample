@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.tikisample.data.model.QuickLinkPair" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dp_72"
+        android:layout_height="@dimen/dp_150"
+        android:paddingBottom="@dimen/dp_8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageIcon1"
+            glideUrl="@{item.quickLink1.imageUrl}"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="w, 1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textQuickLink1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:minLines="2"
+            android:paddingStart="@dimen/dp_2"
+            android:paddingEnd="@dimen/dp_2"
+            android:text="@{item.quickLink1.title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageIcon1"
+            tools:text="Ma giam gia" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageIcon2"
+            glideUrl="@{item.quickLink2.imageUrl}"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/textQuickLink2"
+            app:layout_constraintDimensionRatio="w, 1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textQuickLink2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="top|center"
+            android:minLines="2"
+            android:paddingStart="@dimen/dp_2"
+            android:paddingEnd="@dimen/dp_2"
+            android:text="@{item.quickLink2.title}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_11"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Bach hoa online" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

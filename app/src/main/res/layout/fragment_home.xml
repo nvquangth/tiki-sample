@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.tikisample.ui.home.HomeViewModel" />
+
+        <variable
+            name="flashDealResource"
+            type="com.example.tikisample.data.remote.Resource" />
+
+        <variable
+            name="quickLinkResource"
+            type="com.example.tikisample.data.remote.Resource" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pagerBanner"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                app:layout_constraintDimensionRatio="w, 1:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerQuickLink"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_158"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="horizontal"
+                android:paddingStart="9dp"
+                android:paddingEnd="9dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pagerBanner"
+                tools:listitem="@layout/item_quick_link" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_8"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerQuickLink" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/textDealHot"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_9"
+                android:layout_marginTop="@dimen/dp_8"
+                app:layout_constraintEnd_toStartOf="@+id/gifFlash"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view"
+                app:srcCompat="@drawable/dealhot_str" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/gifFlash"
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="@dimen/dp_18"
+                app:layout_constraintBottom_toBottomOf="@+id/textDealHot"
+                app:layout_constraintEnd_toStartOf="@+id/textToday"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/textDealHot"
+                app:layout_constraintTop_toTopOf="@+id/textDealHot" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/textToday"
+                android:layout_width="@dimen/dp_62"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/gifFlash"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@+id/gifFlash"
+                app:layout_constraintTop_toTopOf="@+id/gifFlash"
+                app:srcCompat="@drawable/today_str" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleViewMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_9"
+                android:text="@string/view_more"
+                android:textAllCaps="true"
+                android:textColor="@android:color/holo_blue_light"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintBottom_toBottomOf="@+id/textToday"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textToday" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerFlashDeal"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_140"
+                android:layout_marginStart="@dimen/dp_9"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textDealHot"
+                tools:listitem="@layout/item_flash_deal" />
+
+            <include
+                layout="@layout/loading_state_normal"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_158"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerQuickLink"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerQuickLink"
+                app:layout_constraintStart_toStartOf="@+id/recyclerQuickLink"
+                app:layout_constraintTop_toTopOf="@+id/recyclerQuickLink"
+                app:resource="@{quickLinkResource}" />
+
+
+            <include
+                layout="@layout/loading_state_normal"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_140"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerFlashDeal"
+                app:layout_constraintEnd_toEndOf="@+id/recyclerFlashDeal"
+                app:layout_constraintStart_toStartOf="@+id/recyclerFlashDeal"
+                app:layout_constraintTop_toTopOf="@+id/recyclerFlashDeal"
+                app:resource="@{flashDealResource}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

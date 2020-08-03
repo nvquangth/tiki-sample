@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineProgressBar">
+        <attr name="lpbBackgroundColor" format="color" />
+        <attr name="lpbProgressColor" format="color" />
+        <attr name="lpbMaxProgress" format="integer" />
+        <attr name="lpbProgress" format="integer" />
+    </declare-styleable>
+</resources>

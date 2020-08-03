@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.tikisample.data.model.FlashDeal" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dp_94"
+        android:layout_height="@dimen/dp_140">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageProduct"
+            glideUrl="@{item.product.thumbnailUrl}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="w, 1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textDiscount"
+            discountPercent="@{item.discountPercent}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_corner_radius_2"
+            android:paddingStart="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_4"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_11"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="-60%" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textPrice"
+            textPrice="@{item.product}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageProduct"
+            tools:text="70.323 d" />
+
+        <com.example.tikisample.widgets.LineProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:lpbBackgroundColor="#f8a0a9"
+            app:lpbMaxProgress="@{item.progress.qty}"
+            app:lpbProgress="@{item.progress.qtyOrdered}"
+            app:lpbProgressColor="#f7403c" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textSell"
+            textSell="@{item.progress}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_11"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            tools:text="Vua mo ban" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageHotDeal"
+            iconHotDealVisibility="@{item.progress}"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginBottom="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:srcCompat="@drawable/icon_fire" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

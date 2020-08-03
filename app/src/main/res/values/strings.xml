@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TikiSample</string>
+
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_category">Danh mục</string>
+    <string name="nav_search">Tìm kiếm</string>
+    <string name="nav_notification">Thông báo</string>
+    <string name="nav_profile">Cá nhân</string>
+
+    <string name="retry">Thử lại</string>
+    <string name="title_deal">Giá sốc hôm nay</string>
+    <string name="view_more">Xem thêm</string>
+    <string name="fd_new_sell">Vừa mở bán</string>
+    <string name="fd_sell">Đã bán</string>
+    <string name="fd_hot_sell">Sắp bán hết</string>
+
+    <!--error message-->
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="connect_timeout">Connection Timeout</string>
+    <string name="force_update_app">Please update app</string>
+    <string name="server_maintain_message">Server maintain, please try again later</string>
+    <string name="unknown_error">Error, please try again later</string>
+</resources>
